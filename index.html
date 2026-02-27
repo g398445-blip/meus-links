@@ -1,174 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Meus Links Privados</title>
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #121212;
-            color: white;
-            text-align: center;
-        }
-
-        input {
-            padding: 10px;
-            width: 250px;
-            margin-top: 20px;
-            border-radius: 5px;
-            border: none;
-        }
-
-        .link {
-            display: block;
-            background: #1f1f1f;
-            margin: 10px auto;
-            padding: 15px;
-            width: 300px;
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .link:hover {
-            background: #00b894;
-        }
-
-        button {
-            margin-top: 5px;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #loginArea {
-            margin-top: 100px;
-        }
-
-        #siteArea {
-            display: none;
-        }
-    </style>
+    <title>Meus Links</title>
 </head>
 
 <body>
 
 <div id="loginArea">
-    <h2>🔒 Acesso Privado</h2>
-    <input type="password" id="senha" placeholder="Digite a senha">
-    <br><br>
+    <input type="password" id="senha">
     <button onclick="verificarSenha()">Entrar</button>
 </div>
 
-<div id="siteArea">
-
-    <h1>📦 My link's </h1>
-
-    <input type="text" id="busca" placeholder="Buscar produto..." onkeyup="filtrarLinks()">
-
-    <div id="linksContainer">
-
-        <div class="link-item">
-            <a class="link" href="https://meli.la/2xkWxvR" target="_blank" onclick="contarClique(0)">
-                Micro-ondas Electrolux 20l Branco
-            </a>
-            <button onclick="copiarLink('https://meli.la/2xkWxvR')">Copiar</button>
-            <p>Cliques: <span id="cliques0">0</span></p>
-        </div>
-
-        <div class="link-item">
-            <a class="link" href="https://meli.la/1WW5nzn" target="_blank" onclick="contarClique(1)">
-                Creatina Monohidratada 250g Growth Supplements
-            </a>
-            <button onclick="copiarLink('https://meli.la/1WW5nzn')">Copiar</button>
-            <p>Cliques: <span id="cliques1">0</span></p>
-        </div>
- 
-        <div class="link-item">
-            <a class="link" href="https://meli.la/1DXJt4G" target="_blank" onclick="contarClique(0)">
-                Kit 10 potes Herméticos Vidro 640ml
-            </a>
-            <button onclick="copiarLink('https://meli.la/1DXJt4G')">Copiar</button>
-            <p>Cliques: <span id="cliques0">0</span></p>
-        </div>
-
-        <div class="link-item">
-            <a class="link" href="https://meli.la/1fyVudz" target="_blank" onclick="contarClique(0)">
-                Celular Samsung Galaxy A07 128gb,4gb,Câmera 50mp,Tela 6.7,proteção Ip54,Processador 6nm - Preto
-            </a>
-            <button onclick="copiarLink('hhttps://meli.la/1fyVudz')">Copiar</button>
-            <p>Cliques: <span id="cliques0">0</span></p>
-        </div>
-
-    </div>
-
+<div id="siteArea" style="display:none;">
+    <h1>Área logada</h1>
 </div>
 
 <script>
 
-<script>
-
-let senhaCorreta = "1234";
+let senhaCorreta = "OlivVendas23";
 
 function verificarSenha(){
     let senhaDigitada = document.getElementById("senha").value;
-    if(senhaDigitada === "1234"){
+
+    if(senhaDigitada === senhaCorreta){
         document.getElementById("loginArea").style.display = "none";
         document.getElementById("siteArea").style.display = "block";
-        carregarCliques();
     } else {
-        alert("Senha incorreta!");
+        alert("Senha incorreta");
     }
 }
-
-function copiarLink(link){
-    navigator.clipboard.writeText(link);
-    alert("Link copiado!");
-}
-
-function filtrarLinks(){
-    let input = document.getElementById("busca").value.toLowerCase();
-    let items = document.getElementsByClassName("link-item");
-
-    for(let i=0; i<items.length; i++){
-        let texto = items[i].innerText.toLowerCase();
-        if(texto.includes(input)){
-            items[i].style.display = "block";
-        } else {
-            items[i].style.display = "none";
-        }
-    }
-}
-
-function contarClique(index){
-    let chave = "cliques_" + index;
-    let total = localStorage.getItem(chave);
-
-    if(total === null){
-        total = 0;
-    }
-
-    total = parseInt(total) + 1;
-
-    localStorage.setItem(chave, total);
-    document.getElementById("cliques"+index).innerText = total;
-}
-
-function carregarCliques(){
-    let items = document.getElementsByClassName("link-item");
-
-    for(let i=0; i<items.length; i++){
-        let chave = "cliques_" + i;
-        let total = localStorage.getItem(chave);
-
-        if(total === null){
-            total = 0;
-        }
-
-        document.getElementById("cliques"+i).innerText = total;
-    }
-}
-
 
 </script>
+
+</body>
+</html>
