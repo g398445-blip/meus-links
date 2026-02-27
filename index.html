@@ -109,11 +109,11 @@
 
 <script>
 
-let senhaCorreta = "OlivVendas23"; // troque sua senha aqui
+let senhaCorreta = "1234";
 
 function verificarSenha(){
     let senhaDigitada = document.getElementById("senha").value;
-    if(senhaDigitada === senhaCorreta){
+    if(senhaDigitada === "1234"){
         document.getElementById("loginArea").style.display = "none";
         document.getElementById("siteArea").style.display = "block";
         carregarCliques();
@@ -169,5 +169,6 @@ function carregarCliques(){
         document.getElementById("cliques"+i).innerText = total;
     }
 }
+
 
 </script>
